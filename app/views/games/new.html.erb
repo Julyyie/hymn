@@ -6,7 +6,7 @@
 
 <div class="slide-container" data-controller="games">
   <% if @step == "new_playlist" %>
-    <%= render 'new_playlist', collection: @slides %>
+    <%= render 'new_playlist' %>
   <% elsif @step == "namegame" %>
     <%= render 'new_namegame' %>
   <% end %>

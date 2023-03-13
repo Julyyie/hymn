@@ -1,17 +1,13 @@
 <h2 class="pt-5">Select a playlist</h2>
 <div class="search-box pt-1">
-  <%= form_with url: new_game_path, method: :get, class: "form-inline d-flex", id:"search-form" do %>
+  <%= form_with url: new_game_path, method: :get, id:"search-form" do %>
     <%= text_field_tag :playlist, params[:playlist], data: { action: "keyup->games#updatelist" }, class: "form-control", placeholder: "Find a Playlist.." %>
-    <%= text_field_tag :spotify_playlist_id, nil, data: { games_target: "input" } %>
+    <%= text_field_tag :spotify_playlist_id, nil, data: { games_target: "input" }, class: "d-none" %>
+
+    <div class="d-flex flex-wrap pt-3 gap-3" data-games-target="list">
+      <%= render "list" if defined?(playlists) %>
+    </div>
+
+    <%= button_tag "Next", type: "submit", class: "btn_pink_lg" %>
   <% end %>
 </div>
-
-<div class="d-flex flex-wrap pt-3 gap-3" data-games-target="list">
-  <%= render "list" if defined?(playlists) %>
-</div>
-
-<%# <%= link_to 'Next', "games/new_namegame", type: "sbumit" class: "btn_pink_lg"  %>
-
-<%= button_tag(type: 'submit', class:"btn_pink_lg") do %>
-  <h3>Next</h3>
-<% end %>
