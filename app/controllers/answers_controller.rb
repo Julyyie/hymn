@@ -2,6 +2,7 @@ class AnswersController < ApplicationController
   skip_before_action :authenticate_user!, only: :login
 
   def index
+
     @song = Song.find(params[:song_id])
     @answers = policy_scope(Answer) # Confirmer le scope avec un TA
     @answers = Answer.where(song: @song).order(time: :asc)
