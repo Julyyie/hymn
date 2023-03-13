@@ -1,5 +1,5 @@
 <% playlists.each do |playlist| %>
-  <div data-action="click->games#playlist" uri="<%= playlist.uri %>" class='text-center col-6 playlist_cards'>
+  <div data-action="click->games#playlist" uri="<%= playlist.uri %>" class='text-center playlist_cards' data-games-target="card">
     <div class="playlist_card">
       <h4><%= playlist.name.truncate(12) %></h4>
       <img src="<%= playlist.images.first["url"] %>">
