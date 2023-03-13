@@ -14,6 +14,14 @@ class AnswersController < ApplicationController
         { event: "game_started", url: new_song_answer_path(@song.game.songs.first) }
       )
     end
+    @next_song = @song.id + 1
+
+    if params[:song_id] == @next_song
+      AnswersIndexChannel.broadcast_to(
+        @song,
+       { event: "next_song", url: new_song_answer_path(@next_song) }
+      )
+    end
   end
 
   def new

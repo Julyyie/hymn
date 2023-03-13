@@ -5,7 +5,8 @@ import { createConsumer } from "@rails/actioncable"
 export default class extends Controller {
   static values = {
     songId: Number,
-    currentUserId: Number
+    currentUserId: Number,
+    gameMaster: Boolean
   }
   static targets = ["answers", "links"]
 
@@ -17,6 +18,9 @@ export default class extends Controller {
           this.answersTarget.insertAdjacentHTML("beforeend", data.answer);
           if (currentUserIsGameMaster) {
             this.linksTarget.insertAdjacentHTML("beforeend", data.answer_links)}
+          else if (data["event"] === "next_song") {
+            window.location.assign(data["url"])
+          }
         }
       }
     )
