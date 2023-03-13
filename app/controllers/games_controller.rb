@@ -6,7 +6,6 @@ class GamesController < ApplicationController
     if params[:playlist].present?
       @step = "namegame"
     end
-
     authorize @game
   end
 
@@ -56,7 +55,6 @@ class GamesController < ApplicationController
     end
 
     @game.finished! if params[:status] == "finished"
-
   end
 
   def list
