@@ -3,14 +3,17 @@
   <%= render "song-player", song: @song%>
 <% end %>
 <h1>Buzzer Order</h1>
+<p>Click on player to accept or refuse answer</p>
 <div
   data-controller="answers-index-subscription"
   data-answers-index-subscription-song-id-value="<%= @song.id %>"
   data-answers-index-subscription-current-user-id-value="<%= current_user.id %>"
   >
-  <div data-answers-index-subscription-target="answers">
+  <div data-answers-index-subscription-target="answers" data-controller="modal">
     <% @answers.each do |answer| %>
-      <%= render "answers", answer: answer, song: @song %>
+      <div data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <%= render "answers", answer: answer, song: @song %>
+      </div>
     <% end %>
   </div>
 </div>
@@ -25,4 +28,21 @@
   <%= link_to "Next Song", "/songs/#{@song.id + 1}/answers/new", class:"btn_pink_lg" %>
 <% end %>
 
-</div>
+<% @answers.each do |answer| %>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen-sm-down">
+      <div class="modal-content">
+        <div class="modal-header">
+          <%= cl_image_tag answer.users_game.user.photo.key, class:"profil_round" %>
+          <h1><%= answer.users_game.user.nickname %></h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <%= render "answer_links", answer: answer, song: @song %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
