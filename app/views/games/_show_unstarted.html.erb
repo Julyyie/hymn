@@ -2,7 +2,7 @@
   <h1 class="pt-5 pb-2"><%= game.name.capitalize %></h1>
   <p>Waiting for participants to join the game...</p>
 
-  <div data-controller="game-subscription"
+  <div data-controller="game-subscription" class="pt-5"
       data-game-subscription-game-id-value="<%= game.id %>"
       data-game-subscription-game-master-value="<%= game.user == current_user %>"
       data-game-subscription-target="players"
@@ -13,7 +13,7 @@
   </div>
 
   <% if game.user == current_user %>
-  <h2>Share this link with your friends!</h2>
+  <h2 class="pt-5">Share this link with your friends!</h2>
 
   <div class="link_join_party d-flex justify-content-between">
     <i class="fa-solid fa-link"></i>
@@ -25,6 +25,6 @@
   </div>
 
     <% else %>
-      <p class="link_join_party"> Please wait for the game master to start the game! You will be soon redirected.</p>
+      <p class="link_join_party mt-5"> Please wait for the game master to start the game! You will be soon redirected.</p>
     <% end %>
 </div>

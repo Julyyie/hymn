@@ -1,5 +1,6 @@
 .playlist_card {
   flex-grow: 1;
+  flex-basis: 40%;
   background-color: rgba(212, 212, 212, 0.8);
 
   backdrop-filter: blur(2px);
@@ -26,7 +27,6 @@
 }
 
 .active{
-  border-color: $yellow;
   border: solid 2px $yellow;
   box-shadow: 0px 0px 25px $yellow;
   border-radius: 10px;
