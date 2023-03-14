@@ -1,5 +1,5 @@
 .modale {
-  background-color: rgba(212, 212, 212, 0.8); //to be commented
+  background: $bg-linear-gradient-02; //to be commented
                                                 //test on background blur when integrated in final HTML
   // backdrop-filter: blur(10px);
   border-radius: 10px;
@@ -10,13 +10,15 @@
   font-size: 20px;
   font-weight: 500;
   text-decoration: none;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .avatar-modale {
   display: flex;
   flex-direction: column;
   align-items: center;
-  > img {
+  > #avatar {
     border-radius: 100%;
     border: solid 2px transparent;
     height: 115px;
@@ -43,7 +45,7 @@
   }
 
   #wrong {
-    color: #E54456;
+    color: $red;
   }
   #correct {
     color: $brand-900;
