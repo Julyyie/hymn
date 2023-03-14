@@ -1,4 +1,4 @@
-
+<div class="bg_animation">
   <h1 class="pt-5 pb-2"><%= game.name.capitalize %></h1>
   <p>Waiting for participants to join the game...</p>
 
@@ -25,9 +25,9 @@
   </div>
 
     <% else %>
-<<<<<<< HEAD
+
       <%= link_to "Start Game", new_song_answer_path(game.songs.first), class: "btn_pink_lg", data: {turbolinks: false} %>
-=======
->>>>>>> master
+
       <p class="link_join_party"> Please wait for the game master to start the game! You will be soon redirected.</p>
     <% end %>
+</div>
