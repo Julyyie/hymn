@@ -2,6 +2,7 @@ class AnswersController < ApplicationController
   skip_before_action :authenticate_user!, only: :login
 
   def index
+
     @song = Song.find(params[:song_id])
     @answers = policy_scope(Answer) # Confirmer le scope avec un TA
     @answers = Answer.where(song: @song).order(time: :asc)
@@ -12,6 +13,15 @@ class AnswersController < ApplicationController
       GameChannel.broadcast_to(
         @song.game,
         { event: "game_started", url: new_song_answer_path(@song.game.songs.first) }
+      )
+    end
+    @next_song = @game.songs.order(:id).where("id > ?", @song.id).first
+
+    @prev_song = @game.songs.order(:id).where("id < ?", @song.id).last
+    if @game.user == current_user
+      AnswersIndexChannel.broadcast_to(
+        @prev_song,
+       { event: "next_song", url: new_song_answer_path(@song) }
       )
     end
   end
@@ -37,7 +47,6 @@ class AnswersController < ApplicationController
         @song,
         answer: render_to_string(partial: "answers", locals: { answer: @answer, song: @song }),
         answer_links: render_to_string(partial: "answer_links", locals: { answer: @answer, song: @song }),
-        game_master_id: game.user.id
       )
       redirect_to song_answers_path(@song)
     else
