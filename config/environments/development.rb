@@ -60,6 +60,7 @@ Rails.application.configure do
   config.assets.quiet = true
 
   config.hosts << /\A[a-z\d-]+\.loca\.lt\z/
+  config.hosts.clear
 
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
