@@ -15,12 +15,13 @@ class AnswersController < ApplicationController
         { event: "game_started", url: new_song_answer_path(@song.game.songs.first) }
       )
     end
-    @next_song = @song.id + 1
+    @next_song = @game.songs.order(:id).where("id > ?", @song.id).first
 
-    if params[:song_id] == @next_song
+    @prev_song = @game.songs.order(:id).where("id < ?", @song.id).last
+    if @game.user == current_user
       AnswersIndexChannel.broadcast_to(
-        @song,
-       { event: "next_song", url: new_song_answer_path(@next_song) }
+        @prev_song,
+       { event: "next_song", url: new_song_answer_path(@song) }
       )
     end
   end
@@ -46,7 +47,6 @@ class AnswersController < ApplicationController
         @song,
         answer: render_to_string(partial: "answers", locals: { answer: @answer, song: @song }),
         answer_links: render_to_string(partial: "answer_links", locals: { answer: @answer, song: @song }),
-        game_master_id: game.user.id
       )
       redirect_to song_answers_path(@song)
     else
