@@ -49,3 +49,24 @@
   </div>
 <% end %>
 </div>
+
+
+<% @answers.each do |answer| %>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen-sm-down">
+      <div class="modal-content">
+        <div class="modal-header">
+          <%= cl_image_tag answer.users_game.user.photo.key, class:"profil_round" %>
+          <h1><%= answer.users_game.user.nickname %></h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <%#= render "answer_links", answer: answer, song: @song %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+</div>
