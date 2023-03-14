@@ -15,6 +15,3 @@ application.register("games", GamesController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
-
-import PlayController from "./play_controller"
-application.register("play", PlayController)

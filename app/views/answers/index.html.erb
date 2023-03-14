@@ -25,8 +25,6 @@
         <%= link_to "End game", game_path(@song.game, params: { status: 'finished' }), class:"btn_stroke_md" %>
         <%= link_to "Next song", song_answers_path(@next_song), data: {turbo: false}, class:"btn_pink_md" %>
       </div>
-    <% else %>
-      <%= link_to "Next Song", "/songs/#{@next_song}/answers/new", class:"btn_pink_lg pt-3" %>
     <% end %>
   </div>
 
