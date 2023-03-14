@@ -12,8 +12,8 @@ Rails.application.routes.draw do
     resources :answers, only: %i[update]
   end
 
-  patch "/songs/:song_id/answers/:answer_id/accept", to: "answers#accept", as: :accept
-  patch "/songs/:song_id/answers/:answer_id/refuse", to: "answers#refuse", as: :refuse
+  get "/songs/:song_id/answers/:answer_id/accept", to: "answers#accept", as: :accept
+  get "/songs/:song_id/answers/:answer_id/refuse", to: "answers#refuse", as: :refuse
 
   resources :songs, only: %i[show] do
     resources :answers, only: %i[new create index]

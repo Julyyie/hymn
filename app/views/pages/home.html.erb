@@ -1,7 +1,9 @@
 
-  <%= image_tag "https://res.cloudinary.com/dwvaux61b/image/upload/v1678707749/cover_bg_h9jln7.png", id:"cover_home", alt: "cover" %>
+  <%= cl_image_tag "https://res.cloudinary.com/dwvaux61b/image/upload/v1678790747/cover_x0bhai.png", id:"cover_home", alt: "cover" %>
 
   <div class="container-title pt-3">
     <h2> Unleash the harmony of group blind tests ✨</h2>
     <%= link_to "Create a game", new_game_path, class: "btn_pink_lg" %>
   </div>
+
+<%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete} %>
