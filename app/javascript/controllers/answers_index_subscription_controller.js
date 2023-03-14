@@ -20,7 +20,8 @@ export default class extends Controller {
           // console.log(currentUserIsGameMaster);
           if (this.gameMasterValue == true) {
             this.answersTarget.insertAdjacentHTML("beforeend", data.answer);
-            this.linksTarget.insertAdjacentHTML("beforeend", data.answer_links)}
+            // this.linksTarget.insertAdjacentHTML("beforeend", data.answer_links)
+          }
           else if (data["event"] === "next_song") {
             window.location.assign(data["url"])
           }
