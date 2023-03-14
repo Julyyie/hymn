@@ -1,7 +1,10 @@
-<div>
-  <p>- <%= answer.users_game.user.nickname%>
-  <%= answer.time %>
-  <%= answer.result_status %></p>
+<div class="player_card">
+  <%= cl_image_tag answer.users_game.user.photo.key, class:"profil_round" %>
+  <div class="player_card_info">
+    <%= answer.users_game.user.nickname%>
+    <%= answer.time %>
+    <%= answer.result_status %>
+  </div>
 
   <div data-answers-index-subscription-target="links">
     <%#= render "answer_links", song: song, answer: answer %>

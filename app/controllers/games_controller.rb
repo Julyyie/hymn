@@ -6,7 +6,6 @@ class GamesController < ApplicationController
     if params[:playlist].present?
       @step = "namegame"
     end
-
     authorize @game
   end
 
