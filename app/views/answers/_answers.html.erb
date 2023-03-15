@@ -3,8 +3,8 @@
     <%= cl_image_tag answer.users_game.user.photo.key, class:"profil_round" %>
     <div class="player_card_info">
       <%= answer.users_game.user.nickname%>
-      <%= answer.time %>
       <%= answer.result_status %>
+      <div><%= answer.response_time.truncate(2) %>s</div>
     </div>
  </div>
 

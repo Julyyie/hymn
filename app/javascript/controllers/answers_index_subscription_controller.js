@@ -16,6 +16,7 @@ export default class extends Controller {
       { channel: "AnswersIndexChannel", song_id: this.songIdValue },
       { received: (data) => {
           console.log(data)
+
           // const currentUserIsGameMaster = this.currentUserIdValue === data.game_master_id
           // console.log(currentUserIsGameMaster);
           if (this.gameMasterValue == true) {
