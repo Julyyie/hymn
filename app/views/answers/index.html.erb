@@ -11,12 +11,7 @@
     data-answers-index-subscription-game-master-value="<%= @song.game.user == current_user %>"
     >
   <div data-answers-index-subscription-target="answers" data-controller="modal">
-    <% @answers.each do |answer| %>
-        <%= render "answers", answer: answer, song: @song %>
-        <% if current_user == @song.game.user %>
-          <%= render "answer_modal", answer: answer, song: @song %>
-        <% end %>
-    <% end %>
+    <%= render "answers_list", answers: @answers, song: @song %>
   </div>
 
 

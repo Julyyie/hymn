@@ -1,5 +1,5 @@
 <div>
-  <div data-bs-toggle="modal" data-bs-target="#Modal<%= answer.users_game.id %>" class="player_card">
+  <div data-bs-toggle="modal" data-bs-target="#Modal<%= answer.users_game.id %>" class="player_card" data-bs-backdrop=false>
     <%= cl_image_tag answer.users_game.user.photo.key, class:"profil_round" %>
     <div class="player_card_info">
       <%= answer.users_game.user.nickname%>

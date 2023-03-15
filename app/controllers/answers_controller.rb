@@ -44,6 +44,7 @@ class AnswersController < ApplicationController
     if @answer.save
       AnswersIndexChannel.broadcast_to(
         @song,
+        event: "player_buzzed",
         answer: render_to_string(partial: "answers", locals: { answer: @answer, song: @song }),
         answer_modal: render_to_string(partial: "answer_modal", locals: { answer: @answer, song: @song }),
       )
@@ -60,7 +61,18 @@ class AnswersController < ApplicationController
     users_game = @answer.users_game
     users_game.score += 10
     users_game.save
-    redirect_to song_answers_path
+    respond_to do |format|
+      format.html { redirect_to song_answers_path }
+      format.text { head :ok }
+    end
+    @song = Song.find(params[:song_id])
+    @answers = Answer.where(song: @song).order(time: :asc)
+    AnswersIndexChannel.broadcast_to(
+      @song,
+      event: "answer_updated",
+      users_game_id: users_game.id,
+      answers: render_to_string(partial: "answers_list", locals: { answers: @answers, song: @song }, formats: [:html])
+    )
   end
 
   def refuse
@@ -70,7 +82,18 @@ class AnswersController < ApplicationController
     users_game = @answer.users_game
     users_game.score -= 5
     users_game.save
-    redirect_to song_answers_path
+    respond_to do |format|
+      format.html { redirect_to song_answers_path }
+      format.text { head :ok }
+    end
+    @song = Song.find(params[:song_id])
+    @answers = Answer.where(song: @song).order(time: :asc)
+    AnswersIndexChannel.broadcast_to(
+      @song,
+      event: "answer_updated",
+      users_game_id: users_game.id,
+      answers: render_to_string(partial: "answers_list", locals: { answers: @answers, song: @song }, formats: [:html])
+    )
   end
 
   private
