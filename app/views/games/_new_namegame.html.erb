@@ -1,7 +1,9 @@
 
     <h2 class="pt-5">Choose a name for this game</h2>
     <%= simple_form_for(@game) do |f| %>
-      <%= f.input :name %>
+      <%= f.input :name,
+          placeholder: "Choose a name for your game",
+          label: false %>
       <%= f.input :spotify_playlist_id, as: :hidden, input_html: {
         value: params[:spotify_playlist_id],
         data: { games_target: "input" }
