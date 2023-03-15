@@ -1,7 +1,10 @@
 <div class="container-answer pt-5 " data-controller="answers-index-subscription" data-answers-index-subscription-song-id-value="<%= @song.id %>">
-    <h1 class="text-center pb-5">Can you guess the song?</h1>
+  <h1 class="text-center pb-5">Can you guess the song?</h1>
   <div class="container-buzzer d-flex justify-content-center pt-5">
     <%= render "buzzer", song: @song %>
   </div>
 </div>
-  <p class="info_card fixed-bottom mb-5 mx-4">🤫 Don’t say anything! Wait to see if you are the first to answer...</p>
+
+<%# raise %>
+
+<p class="info_card fixed-bottom mb-5 mx-4">🤫 Don’t say anything! Wait to see if you are the first to answer...</p>
