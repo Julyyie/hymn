@@ -1,11 +1,12 @@
 .top_3_rank {
+  margin: 30px 20px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   // position: relative;
   align-items: end;
+  transform: scale(0.9);
 }
-
 .avatar-highlight {
   display: flex;
   flex-direction: column;
