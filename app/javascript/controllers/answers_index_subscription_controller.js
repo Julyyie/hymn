@@ -29,15 +29,13 @@ export default class extends Controller {
           } else if (data["event"] === "game_finished" && this.gameMasterValue === false) {
           window.location.assign(data["url"])
           } else if (data["event"] === "answer_updated") {
-            const modal = Modal.getInstance(`#Modal${data["users_game_id"]}`);
-            modal.hide();
-
-            setTimeout(() => {
+            if (this.gameMasterValue === true) {
+              const modal = Modal.getInstance(`#Modal${data["users_game_id"]}`);
+              modal.hide();
               document.querySelectorAll(".modal-backdrop").forEach((modal) => {
                 modal.remove();
               })
-            }, 100);
-
+            }
             this.answersTarget.innerHTML = data["answers"]
           }
         }
