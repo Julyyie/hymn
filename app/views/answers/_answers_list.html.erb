@@ -1,0 +1,6 @@
+<% answers.each do |answer| %>
+  <%= render "answers", answer: answer, song: song %>
+  <% if current_user == song.game.user %>
+    <%= render "answer_modal", answer: answer, song: song %>
+  <% end %>
+<% end %>

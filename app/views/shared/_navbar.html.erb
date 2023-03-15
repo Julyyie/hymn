@@ -1,5 +1,7 @@
 <div class="navbar">
-  <%= image_tag "https://i.ibb.co/6wKKzwH/LOGO.png", alt: "logo" %>
+  <%= link_to root_path do %>
+    <%= image_tag "https://i.ibb.co/6wKKzwH/LOGO.png", alt: "logo" %>
+  <% end %>
   <% if user_signed_in? %>
     <div class="dropdrown">
       <%= cl_image_tag current_user.photo.key, class:"profil_round  dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
