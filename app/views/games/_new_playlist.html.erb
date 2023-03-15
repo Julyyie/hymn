@@ -4,7 +4,7 @@
     <%= text_field_tag :playlist, params[:playlist], data: { action: "keyup->games#updatelist" }, class: "form-control", placeholder: "Find a Playlist.." %>
     <%= text_field_tag :spotify_playlist_id, nil, data: { games_target: "input" }, class: "d-none" %>
 
-    <div class="d-flex flex-wrap pt-3 gap-3" data-games-target="list">
+    <div class="d-flex flex-wrap pt-3 gap-3 justify-content-center" data-games-target="list">
       <%= render "list" if defined?(playlists) %>
     </div>
 
