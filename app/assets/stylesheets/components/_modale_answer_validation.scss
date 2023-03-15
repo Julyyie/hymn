@@ -10,7 +10,7 @@
   margin: 20px;
   background: $bg-linear-gradient-02;
   border-radius: 10px;
-  box-shadow: (0px 6px 28px rgba(45, 45, 45, 0.6));
+  box-shadow: (0px 6px 28px rgba(95, 95, 95, 0.6));
   padding: 230px 0px;
 }
 
@@ -30,6 +30,7 @@
     border-color: transparent;
     height: 135px;
     width: 135px;
+    box-shadow: (0px 6px 28px rgba(95, 95, 95, 0.6));
     // transform: scale(1.4);
     }
 
@@ -49,6 +50,7 @@
 
   #wrong {
     color: $red;
+
   }
   #correct {
     color: $brand-900;

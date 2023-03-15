@@ -3,9 +3,9 @@
     <%= image_tag "https://i.ibb.co/6wKKzwH/LOGO.png", alt: "logo" %>
   <% end %>
   <% if user_signed_in? %>
-    <div class="dropdrown">
-      <%= cl_image_tag current_user.photo.key, class:"profil_round  dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+    <div class="dropdrown" data-controller="dropdown">
+      <%= cl_image_tag current_user.photo.key, class:"profil_round  dropdown-toggle", data: { action: "click->dropdown#toggle" } %>
+      <div data-dropdown-target="dropdown" class="d-none">
         <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
       </div>
     </div>

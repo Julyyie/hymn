@@ -3,7 +3,7 @@
   <%= render "song-player", song: @song%>
 <% end %>
 <h1 class="pt-3">Buzzer Order</h1>
-<p>Click on a player to accept or refuse the answer</p>
+<p>Click on a player to accept or refuse <br>the answer</p>
 <div class="pt-3"
     data-controller="answers-index-subscription"
     data-answers-index-subscription-song-id-value="<%= @song.id %>"
