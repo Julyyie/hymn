@@ -1,4 +1,4 @@
-<div class="container">
+<div class="pt-3">
 <% if current_user == @song.game.user %>
   <%= render "song-player", song: @song%>
 <% end %>
@@ -18,13 +18,12 @@
         <% end %>
     <% end %>
   </div>
-</div>
 
-    <% if current_user == @song.game.user %>
-      <div class=" d-flex justify-content-between flex-grow pt-3">
 
-        <%= link_to "End game", game_path(@song.game, params: { status: 'finished', song_id: @song.id }), class:"btn_stroke_md" %>
-        <%= link_to "Next song", song_answers_path(@next_song), data: {turbo: false}, class:"btn_pink_md" %>
+      <% if current_user == @song.game.user %>
+        <div class=" d-flex justify-content-between flex-grow pt-3">
+         <%= link_to "End game", game_path(@song.game, params: { status: 'finished', song_id: @song.id }), class:"btn_stroke_md" %>
+         <%= link_to "Next song", song_answers_path(@next_song), data: {turbo: false}, class:"btn_pink_md" %>
       </div>
     <% end %>
   </div>
