@@ -1,4 +1,4 @@
-<div class="bg_animation">
+<div class="">
   <h1 class="pt-5 pb-2"><%= game.name.capitalize %></h1>
   <p>Waiting for participants to join the game...</p>
 
@@ -25,6 +25,6 @@
   </div>
 
     <% else %>
-      <p class="link_join_party mt-5"> Please wait for the game master to start the game! You will be soon redirected.</p>
+      <p class="link_join_party mt-5" data-controller="explanation"> Please wait for the game master to start the game! You will be soon redirected.</p>
     <% end %>
 </div>

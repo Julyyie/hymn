@@ -4,11 +4,17 @@
   box-shadow: (0px 6px 18px rgba(11, 8, 42, 0.13));
   padding: 20px 70px;
   border: none;
-  width: 100%;
   display: flex;
   justify-content: center;
   margin-top: 10px;
   margin-bottom: 10px;
+  width: 100%;
+
+  // position: fixed;
+  // width: 84%;
+  // bottom: 4%;
+  // left: 8%;
+
 
   // text
   font-size: 20px;
@@ -19,5 +25,4 @@
 
 .btn_pink_lg :hover {
   color: $dark-000;
-
 }

@@ -1,21 +1,18 @@
-<h1 class="pt-5 pb-2">Game Ranking</h1>
-<p>And the winner is...</p>
+<h1 class="pt-5">Game Ranking</h1>
+<p class="mb-5">And the winner is...</p>
 
-<div class=" d-flex justify-content-between flex-grow">
-  <%#= render "", class:"btn_pink_md" %>
-  <%#= render "", class:"btn_stroke_md" %>
-</div>
-<% sorted_users_games = game.users_games.order(score: :desc) %>
-
-<% sorted_users_games.each do |user_game| %>
-  <div class="<%= current_user = user_game.user ? 'my_card' : 'player_card' %>">
-        <%= cl_image_tag user_game.user.photo.key, class:"profil_round" %>
-      <div class="d-flex justify-content-between <%= current_user = user_game.user ? 'my_card_info' : 'player_card_info' %>">
-        <p><%= user_game.user.nickname %></p>
-        <p><strong><%= user_game.score %></strong></p>
+      <div class="d-flex flex-column">
+        <% sorted_users_games = game.users_games.order(score: :desc) %>
+        <% sorted_users_games.each do |user_game| %>
+        <div class="player_card">
+            <%= cl_image_tag user_game.user.photo.key, class:"profil_round" %>
+            <div class="player_card_info d-flex justify-content-between">
+              <p><%= user_game.user.nickname %></p>
+              <p><strong><%= user_game.score %></strong></p>
+            </div>
+        </div>
+        <% end %>
       </div>
-    <% end %>
 
-    <%= link_to "Create a new Game", new_game_path, class: "btn_pink_lg" %>
-    <p class="link_join_party">If you don't want to be the game master, just wait for a link to join a game!</p>
-  </div>
+  <%= link_to "Create a new Game", new_game_path, class: "btn_pink_lg mt-3" %>
+  <p class="link_join_party mt-3">If you don't want to be the game master, just wait for a link to join a game!</p>

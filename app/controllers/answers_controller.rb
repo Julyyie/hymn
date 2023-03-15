@@ -20,7 +20,7 @@ class AnswersController < ApplicationController
     if @game.user == current_user
       AnswersIndexChannel.broadcast_to(
         @prev_song,
-       { event: "next_song", url: new_song_answer_path(@song) }
+       { event: "next_song", url: new_song_answer_path(@song), timestamp: Time.now }
       )
     end
   end
@@ -32,6 +32,7 @@ class AnswersController < ApplicationController
   end
 
   def create
+    @response_time = Time.now - Time.at(params[:timestamp].to_i / 1000)
     @song = Song.find(params[:song_id])
     user = current_user
     game = @song.game
@@ -39,6 +40,7 @@ class AnswersController < ApplicationController
     @answer = Answer.new
     @answer.users_game = users_game
     @answer.song = @song
+    @answer.response_time = @response_time
     authorize @answer
 
     if @answer.save
@@ -60,6 +62,15 @@ class AnswersController < ApplicationController
     @answer.update(result_status: 'accepted')
     users_game = @answer.users_game
     users_game.score += 10
+
+    if @answer.response_time < 1
+      users_game.score += 20
+    elsif @answer.response_time < 3
+      users_game.score += 10
+    elsif @answer.response_time < 5
+      users_game.score += 5
+    end
+
     users_game.save
     respond_to do |format|
       format.html { redirect_to song_answers_path }
