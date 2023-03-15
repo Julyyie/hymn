@@ -8,7 +8,7 @@ export default class extends Controller {
     currentUserId: Number,
     gameMaster: Boolean
   }
-  static targets = ["answers", "links"]
+  static targets = ["answers"]
 
   connect() {
     console.log(this.gameMasterValue)
@@ -20,10 +20,12 @@ export default class extends Controller {
           // console.log(currentUserIsGameMaster);
           if (this.gameMasterValue == true) {
             this.answersTarget.insertAdjacentHTML("beforeend", data.answer);
-            // this.linksTarget.insertAdjacentHTML("beforeend", data.answer_links)
+            this.answersTarget.insertAdjacentHTML("beforeend", data.answer_modal)
           }
           else if (data["event"] === "next_song") {
             window.location.assign(data["url"])
+          } else if (data["event"] === "game_finished") {
+          window.location.assign(data["url"])
           }
         }
       }
