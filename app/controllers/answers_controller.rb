@@ -45,7 +45,7 @@ class AnswersController < ApplicationController
       AnswersIndexChannel.broadcast_to(
         @song,
         answer: render_to_string(partial: "answers", locals: { answer: @answer, song: @song }),
-        answer_links: render_to_string(partial: "answer_links", locals: { answer: @answer, song: @song }),
+        # answer_links: render_to_string(partial: "answer_links", locals: { answer: @answer, song: @song }),
       )
       redirect_to song_answers_path(@song)
     else

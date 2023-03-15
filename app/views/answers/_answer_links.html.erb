@@ -1,7 +1,6 @@
-<%= link_to refuse_path(song, answer), data: {turbo: false}, class: "text-decoration-none btn_refuse" do %>
-  <%= image_tag "btn_wrong.png" %>
+<%= link_to refuse_path(song, answer), data: {turbo_method: :patch}, class: "text-decoration-none", id:"wrong" do %>
+  <i class="fa-sharp fa-regular fa-circle-xmark"></i>
 <% end %>
-
-<%= link_to accept_path(song, answer), data: {turbo: false}, class: "text-decoration-none btn_accept" do %>
-  <%= image_tag "btn_good.png" %>
+<%= link_to accept_path(song, answer), data: {turbo_method: :patch}, class: "text-decoration-none", id:"correct" do %>
+  <i class="fa-regular fa-circle-check"></i>
 <% end %>
