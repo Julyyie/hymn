@@ -16,17 +16,15 @@
 
 <% if current_user != answer.users_game.user %>
   <div class="modal fade" id="Modal<%= answer.users_game.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-fullscreen">
-      <div class="modale modal-content">
+    <div class="modal-dialog">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         <div class="avatar-modale">
           <%= cl_image_tag answer.users_game.user.photo.key, class:"profil_round", id:"avatar" %>
           <h3><%= answer.users_game.user.nickname %></h3>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="answers">
             <%= render "answer_links", answer: answer, song: @song %>
         </div>
-      </div>
     </div>
   </div>
 <% end %>

@@ -5,13 +5,17 @@
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #CCCCCC;
   background-color: #D9D9D9;
   background-clip: padding-box;
   border: 1px solid #ced4da;
   appearance: none;
   border-radius: 14px;
 
+}
+
+.form-control:focus {
+  box-shadow: 0px 0px 15px $blue;
+  border: solid 1px $blue;
 }
 
 
@@ -26,4 +30,3 @@
   bottom: 5px;
   border: none;
 }
-
