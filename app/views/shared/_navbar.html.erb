@@ -1,6 +1,6 @@
 <div class="navbar">
-  <%= image_tag "https://i.ibb.co/6wKKzwH/LOGO.png", alt: "logo" do %>
-   <%= link_to "Home", root_path %>
+  <%= link_to root_path do %>
+    <%= image_tag "https://i.ibb.co/6wKKzwH/LOGO.png", alt: "logo" %>
   <% end %>
   <% if user_signed_in? %>
     <div class="dropdrown">

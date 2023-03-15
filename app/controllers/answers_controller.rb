@@ -20,7 +20,7 @@ class AnswersController < ApplicationController
     if @game.user == current_user
       AnswersIndexChannel.broadcast_to(
         @prev_song,
-       { event: "next_song", url: new_song_answer_path(@song) }
+       { event: "next_song", url: new_song_answer_path(@song), timestamp: Time.now }
       )
     end
   end
@@ -32,6 +32,7 @@ class AnswersController < ApplicationController
   end
 
   def create
+    @response_time = Time.now - Time.at(params[:timestamp].to_i / 1000)
     @song = Song.find(params[:song_id])
     user = current_user
     game = @song.game
@@ -39,13 +40,15 @@ class AnswersController < ApplicationController
     @answer = Answer.new
     @answer.users_game = users_game
     @answer.song = @song
+    @answer.response_time = @response_time
     authorize @answer
 
     if @answer.save
       AnswersIndexChannel.broadcast_to(
         @song,
+        event: "player_buzzed",
         answer: render_to_string(partial: "answers", locals: { answer: @answer, song: @song }),
-        # answer_links: render_to_string(partial: "answer_links", locals: { answer: @answer, song: @song }),
+        answer_modal: render_to_string(partial: "answer_modal", locals: { answer: @answer, song: @song }),
       )
       redirect_to song_answers_path(@song)
     else
@@ -59,8 +62,28 @@ class AnswersController < ApplicationController
     @answer.update(result_status: 'accepted')
     users_game = @answer.users_game
     users_game.score += 10
+
+    if @answer.response_time < 1
+      users_game.score += 20
+    elsif @answer.response_time < 3
+      users_game.score += 10
+    elsif @answer.response_time < 5
+      users_game.score += 5
+    end
+
     users_game.save
-    redirect_to song_answers_path
+    respond_to do |format|
+      format.html { redirect_to song_answers_path }
+      format.text { head :ok }
+    end
+    @song = Song.find(params[:song_id])
+    @answers = Answer.where(song: @song).order(time: :asc)
+    AnswersIndexChannel.broadcast_to(
+      @song,
+      event: "answer_updated",
+      users_game_id: users_game.id,
+      answers: render_to_string(partial: "answers_list", locals: { answers: @answers, song: @song }, formats: [:html])
+    )
   end
 
   def refuse
@@ -70,7 +93,18 @@ class AnswersController < ApplicationController
     users_game = @answer.users_game
     users_game.score -= 5
     users_game.save
-    redirect_to song_answers_path
+    respond_to do |format|
+      format.html { redirect_to song_answers_path }
+      format.text { head :ok }
+    end
+    @song = Song.find(params[:song_id])
+    @answers = Answer.where(song: @song).order(time: :asc)
+    AnswersIndexChannel.broadcast_to(
+      @song,
+      event: "answer_updated",
+      users_game_id: users_game.id,
+      answers: render_to_string(partial: "answers_list", locals: { answers: @answers, song: @song }, formats: [:html])
+    )
   end
 
   private

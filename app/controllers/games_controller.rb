@@ -49,12 +49,19 @@ class GamesController < ApplicationController
       if users_game.save!
         GameChannel.broadcast_to(
           @game,
-          { event: "player_joined", html: render_to_string(partial: "player", locals: {user_game: users_game}) }
+          { event: "player_joined", html: render_to_string(partial: "player", locals: { user_game: users_game }) }
         )
       end
     end
 
-    @game.finished! if params[:status] == "finished"
+    if params[:status] == "finished"
+      @game.finished!
+      @song = @game.songs.find(params[:song_id])
+      AnswersIndexChannel.broadcast_to(
+        @song,
+        { event: "game_finished", url: game_path(@game) }
+      )
+    end
   end
 
   def list
