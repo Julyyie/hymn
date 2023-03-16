@@ -21,6 +21,10 @@
 
 #search-form {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 50vh;
 }
 
 #search-btn {
