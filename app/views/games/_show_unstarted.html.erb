@@ -1,11 +1,13 @@
-<div class="">
-  <h1 class="pt-5"><%= game.name.capitalize %></h1>
-  <p>Waiting for participants to join the game...</p>
-  <p class="waiting_rules mt-3" data-controller="explanation">
+<div id="show-unstarted">
+  <div>
+    <h1 class="pt-5"><%= game.name.capitalize %></h1>
+    <p>Waiting for participants to join the game...</p>
+     <p class="waiting_rules mt-3" data-controller="explanation">
     <span data-explanation-target="text" class="fade">Please wait for the game master! You will be soon redirected.</span>
   </p>
+  </div>
 
-  <div data-controller="game-subscription" class="pt-3"
+  <div data-controller="game-subscription" class="pt-3 flex-grow-1"
       data-game-subscription-game-id-value="<%= game.id %>"
       data-game-subscription-game-master-value="<%= game.user == current_user %>"
       data-game-subscription-target="players"
@@ -20,18 +22,19 @@
     <% end %>
   </div>
 
-  <% if game.users_games_except(current_user) %>
-  <h2 class="pt-5 pb-2">Share this link with your friends!</h2>
+  <div>
+    <% if game.user == current_user %>
+    <h2 class="pt-5 pb-2">Share this link with your friends!</h2>
 
-  <div class="link_join_party d-flex justify-content-between">
-    <i class="fa-solid fa-link"></i>
-    <p>www.hymngame.online/games/<%= game.id %></p>
-  </div>
+    <div class="link_join_party d-flex justify-content-between">
+      <i class="fa-solid fa-link"></i>
+      <p>www.hymngame.online/games/<%= game.id %></p>
+    </div>
 
-  <div class="pt-3">
-    <%= link_to 'Start Game', song_answers_path(game.songs.first, params: { status: 'ongoing' }), class: "btn_pink_lg", data: {turbolinks: false} %>
-  </div>
+    <div class="pt-3">
+      <%= link_to 'Start Game', song_answers_path(game.songs.first, params: { status: 'ongoing' }), class: "btn_pink_lg", data: {turbolinks: false} %>
+    </div>
 
     <% end %>
-
+  </div>
 </div>

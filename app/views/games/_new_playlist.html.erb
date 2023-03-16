@@ -1,9 +1,10 @@
-<h2>Select a playlist</h2>
-<div class="info_card">
+<h2 class="pt-5">Select a playlist</h2>
+<div class="info_card my-3">
   <p>Choose a playlist of your own or select one from the public playlists.</p>
   <p class="pt-1"><strong>Try “Rock”, “60s”, “Top Songs”...</strong></p>
 </div>
-<div class="search-box pt-3">
+<div class="search-box">
+
   <%= form_with url: new_game_path, method: :get, id:"search-form" do %>
     <%= text_field_tag :playlist, params[:playlist], data: { action: "keyup->games#updatelist" }, class: "form-control", placeholder: "Find a Playlist.." %>
     <%= text_field_tag :spotify_playlist_id, nil, data: { games_target: "input" }, class: "d-none" %>

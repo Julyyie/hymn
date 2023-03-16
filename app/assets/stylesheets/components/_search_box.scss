@@ -20,6 +20,11 @@
 
 #search-form {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 50vh;
+  margin-bottom: 1rem;
 }
 
 #search-btn {
@@ -30,6 +35,13 @@
   border: none;
 }
 
+#new_game {
+  display: flex;
+  flex-direction: column;
+  min-height: 64vh;
+  justify-content: space-between;
+ }
+ 
 .fade {
   transition: all .7s ease-in-out;
 }

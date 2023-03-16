@@ -18,3 +18,10 @@
       background-position: 93% 0%
   }
 }
+
+#show-unstarted {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  min-height: 85vh;
+}
