@@ -2,7 +2,6 @@
   flex-grow: 1;
   justify-self: flex-end;
   text-align: right;
-
 }
 .dropdown-item {
   margin-top: 10px;
@@ -14,5 +13,15 @@
   padding: 5px 15px;
   display: block;
   justify-content: end;
+}
 
+.nav-link {
+  flex-grow: 1;
+  justify-self: flex-end;
+  text-align: right;
+  color: white;
+}
+
+.nav-link:focus {
+  color: $brand-900;
 }
