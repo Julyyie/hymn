@@ -18,6 +18,7 @@
     width: 115px;
     display: flex;
     justify-content: center;
+    object-fit: cover;
   }
   h3 {
 
@@ -39,6 +40,8 @@
       height: 135px;
       width: 135px;
       transform: scale(1.4);
+      object-fit: cover;
+
     }
     h3 {
       background-color: $yellow;
@@ -49,6 +52,8 @@
     > img {
       border-color: $brand-900;
       box-shadow: 0px 0px 15px $brand-900;
+      object-fit: cover;
+
     }
     h3 {
       background-color: $brand-900;
@@ -58,6 +63,8 @@
     > img {
       border-color: $blue;
       box-shadow: 0px 0px 15px $blue;
+      object-fit: cover;
+
     }
     h3 {
       background-color: $blue;
