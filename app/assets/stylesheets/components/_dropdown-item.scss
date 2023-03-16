@@ -1,0 +1,18 @@
+.dropdrown {
+  flex-grow: 1;
+  justify-self: flex-end;
+  text-align: right;
+
+}
+.dropdown-item {
+  margin-top: 10px;
+  background-color: $dark-000;
+  border: solid 1px $brand-900;
+  border-radius: 5px;
+  color: $brand-900;
+  font-size: 12px;
+  padding: 5px 15px;
+  display: block;
+  justify-content: end;
+
+}

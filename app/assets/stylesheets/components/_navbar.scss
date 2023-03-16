@@ -1,7 +1,12 @@
+
 .navbar {
   padding-top: 0;
   margin-top: 0;
   display: flex;
   justify-content: space-between;
   cursor: pointer;
-  }
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  align-items: self-start;
+
+}

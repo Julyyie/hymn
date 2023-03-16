@@ -15,62 +15,75 @@ User.destroy_all
 
 puts "Start creating new users..."
 
-user1 = User.create!(nickname: "Julie", email: "delaruejuulie@gmail.com", password: "123456")
-file = URI.open("https://res.cloudinary.com/dwvaux61b/image/upload/ar_1:1,b_rgb:262c35,bo_1px_solid_rgb:ffffff,c_crop,g_auto,r_max,w_1000/v1678206884/waist-up-shot-relaxed-happy-young-woman-makes-zen-gesture-meditates-indoor-breathes-deeply-practices-yoga-feel-relaxed-wears-spectacles-casual-jumper-isolated-pink-background_273609-58084_wsqicu.jpg")
+user1 = User.create!(nickname: "Julyyie 🧚‍♂️", email: "delaruejuulie@gmail.com", password: "123456")
+file = URI.open("https://res.cloudinary.com/dwvaux61b/image/upload/v1678966551/5C10FC66-6267-4762-AB1C-870DA1D25F0D_kbfapt.jpg")
 user1.photo.attach(io: file, filename: "julie_avatar.png", content_type: "image/png")
 
 
-user2 = User.create!(nickname: "Laure", email: "laurematoussowsky@gmail.com", password: "123456")
-file = URI.open("https://res.cloudinary.com/dwvaux61b/image/upload/ar_1:1,b_rgb:262c35,bo_0px_solid_rgb:ffffff,c_crop,g_auto,o_100,pg_1,r_max,w_1000,x_0/v1678206811/portrait-happy-young-female-model-keeps-hands-cheeks-smiles-broadly-shows-white-teeth-feels-glad-expresses-sincere-emotions-wears-green-turtleneck-isolated-purple-studio-background_273609-58593_tq7fc8.jpg")
+user2 = User.create!(nickname: "Laure 🎤", email: "laurematoussowsky@gmail.com", password: "123456")
+file = URI.open("https://res.cloudinary.com/dwvaux61b/image/upload/v1678966466/PP_Slack_bt0qzk.jpg")
 user2.photo.attach(io: file, filename: "laure_avatar.png", content_type: "image/png")
 
 
-user3 = User.create!(nickname: "Shanti", email: "shanti.ravdjee@gmail.com", password: "123456")
-file = URI.open("https://res.cloudinary.com/dwvaux61b/image/upload/ar_1:1,b_rgb:262c35,bo_1px_solid_rgb:ff0000,c_crop,g_auto,r_max,w_1000/v1678206502/young-pretty-young-woman-thinks-ideas-concentrated-stands-thoughtful-keeps-hand-face-stands-thoughtful-pose-wears-round-glasses-yellow-sweater_273609-45345_ptsjiw.jpg")
+user3 = User.create!(nickname: "Shanti 🫖", email: "shanti.ravdjee@gmail.com", password: "123456")
+file = URI.open("https://res.cloudinary.com/dwvaux61b/image/upload/v1678966464/Portraits_LeWagon_20230206_by_BenoitBillard036_hrve7x.jpg")
 user3.photo.attach(io: file, filename: "shanti_avatar.png", content_type: "image/png")
 
-user4 = User.create!(nickname: "Jordan", email: "akonojo.eb@gmail.com", password: "123456")
-file = URI.open("https://res.cloudinary.com/dwvaux61b/image/upload/ar_1:1,b_rgb:262c35,bo_1px_solid_rgb:ffffff,c_crop,g_auto,r_max,w_1000/v1678207565/waist-up-shot-handsome-self-confident-cheerful-male-entrepreneur-has-broad-smile_273609-18909_qu8eap.jpg")
+user4 = User.create!(nickname: "Sade 👩‍🎤", email: "akonojo.eb@gmail.com", password: "123456")
+file = URI.open("https://res.cloudinary.com/dwvaux61b/image/upload/v1678973257/8505BA74-F27C-491D-B8DE-7F0A3E0B3BF8_kqenzc.jpg")
 user4.photo.attach(io: file, filename: "jordan_avatar.png", content_type: "image/png")
 
 
-user5 = User.create!(nickname: "Yann", email: "yann.delcroix@gmail.com", password: "123456")
-file = URI.open("https://res.cloudinary.com/dwvaux61b/image/upload/ar_1:1,b_rgb:262c35,bo_1px_solid_rgb:ffffff,c_crop,g_auto,r_max,w_1000/v1678207574/waist-up-portrait-handsome-serious-unshaven-male-keeps-hands-together-dressed-dark-blue-shirt-has-talk-with-interlocutor-stands-against-white-wall-self-confident-man-freelancer_273609-16320_gvezia.jpg")
-user5.photo.attach(io: file, filename: "yann_avatar.png", content_type: "image/png")
+user5 = User.create!(nickname: "Piou 🐣", email: "hamza.ramdani@hotmail.fr", password: "123456")
+file = URI.open("https://res.cloudinary.com/dwvaux61b/image/upload/v1678973112/hamza_zo3d1z.jpg")
+user5.photo.attach(io: file, filename: "hamza_avatar.png", content_type: "image/png")
 
-user6 = User.create!(nickname: "Nicolas", email: "shanti@gmail.com", password: "123456")
-file = URI.open("https://res.cloudinary.com/dwvaux61b/image/upload/ar_1:1,b_rgb:262c35,bo_1px_solid_rgb:ffffff,c_crop,g_auto,r_max,w_1000/v1678208240/portrait-handsome-bearded-european-man-with-grey-hair-beard-smiles-pleasantly-looks-directly-front-being-good-mood-has-lucky-day-wears-spectacles-sweater-isolated-blue-wall_273609-44285_cgncfp.jpg")
+user6 = User.create!(nickname: "Lady Wagon 💃", email: "brien.nicolas@gmail.com", password: "123456")
+file = URI.open("https://res.cloudinary.com/dwvaux61b/image/upload/v1678966052/slack-imgs.com_huu1rd.jpg")
 user6.photo.attach(io: file, filename: "nicolas_avatar.png", content_type: "image/png")
 
-user7 = User.create!(nickname: "Diane", email: "diane.badass@hotmail.fr", password: "123456")
-file = URI.open("https://res.cloudinary.com/dwvaux61b/image/upload/ar_1:1,b_rgb:262c35,bo_1px_solid_rgb:ffffff,c_crop,g_auto,r_max,w_1000/v1678208255/tender-feminine-woman-with-blue-eyes-smiles-pleasantly-has-toothy-smile-wears-white-comfortable-sweater-looks-directly-camera-isolated-pink-background_273609-32160_krbxee.jpg")
-user7.photo.attach(io: file, filename: "diane_avatar.png", content_type: "image/png")
+user7 = User.create!(nickname: "Geof", email: "g.moreaud@gmail.com", password: "123456")
+file = URI.open("https://res.cloudinary.com/dwvaux61b/image/upload/v1678973137/geoffroy_yrkrwk.jpg")
+user7.photo.attach(io: file, filename: "geoffroy_avatar.png", content_type: "image/png")
 
 
-user8 = User.create!(nickname: "Jean", email: "tim.regis@gmail.com", password: "123456")
-file = URI.open("https://res.cloudinary.com/dwvaux61b/image/upload/ar_1:1,b_rgb:262c35,bo_1px_solid_rgb:ffffff,c_fill,g_auto,r_max,w_1000/v1678208449/young-bearded-man-with-striped-shirt_273609-5677_rdk0cr.jpg")
+user8 = User.create!(nickname: "Jean 🐰", email: "jean.l94240@gmail.com ", password: "123456")
+file = URI.open("https://res.cloudinary.com/dwvaux61b/image/upload/v1678968866/jean_jhnert.jpg")
 user8.photo.attach(io: file, filename: "jean_avatar.png", content_type: "image/png")
 
-user9 = User.create!(nickname: "Malo", email: "malobobrow@gmail.org", password: "123456")
-file = URI.open("https://res.cloudinary.com/dwvaux61b/image/upload/ar_1:1,b_rgb:262c35,bo_1px_solid_rgb:ffffff,c_fill,g_auto,r_max,w_1000/v1678208430/happy-man-with-long-thick-ginger-beard-has-friendly-smile_273609-16616_uwj3jo.jpg")
+user9 = User.create!(nickname: "Maalox", email: "malo.bobrow@gmail.com", password: "123456")
+file = URI.open("https://res.cloudinary.com/dwvaux61b/image/upload/v1678966628/T02NE0241-U04J2S1QY9M-1e53771d3b9a-512_vj0lnu.jpg")
 user9.photo.attach(io: file, filename: "malo_avatar.png", content_type: "image/png")
 
 
-user10 = User.create!(nickname: "Gwenola", email: "laure@gmail.com", password: "123456")
-file = URI.open("https://res.cloudinary.com/dwvaux61b/image/upload/ar_1:1,b_rgb:262c35,bo_1px_solid_rgb:ffffff,c_crop,g_auto,r_max,w_1000/v1678208602/portrait-young-blonde-woman-white-t-shirt_273609-11508_p8vpdz.jpg")
-user10.photo.attach(io: file, filename: "gwenola_avatar.png", content_type: "image/png")
+user10 = User.create!(nickname: "Saoule", email: " murielbourre@gmail.com", password: "123456")
+file = URI.open("https://res.cloudinary.com/dwvaux61b/image/upload/v1678973130/muriel_mzhakx.jpg")
+user10.photo.attach(io: file, filename: "muriel_avatar.png", content_type: "image/png")
 
-user11 = User.create!(nickname: "Samuel", email: "samsam@gmail.us", password: "123456")
-file = URI.open("https://res.cloudinary.com/dwvaux61b/image/upload/ar_1:1,b_rgb:262c35,bo_1px_solid_rgb:ffffff,c_crop,g_auto,r_max,w_1000/v1678208618/puzzled-indecisive-man-scratches-head-has-no-idea_273609-40695_mdfvoq.jpg")
-user11.photo.attach(io: file, filename: "samuel_avatar.png", content_type: "image/png")
+user11 = User.create!(nickname: "Millette 🥐", email: "lisamilletpro@gmail.com", password: "123456")
+file = URI.open("https://res.cloudinary.com/dwvaux61b/image/upload/v1678966589/T02NE0241-U04JE269VRC-fd5fe896f1ec-512_tshri2.jpg")
+user11.photo.attach(io: file, filename: "lisa_avatar.png", content_type: "image/png")
 
-user12 = User.create!(nickname: "Murielle", email: "murielle@gmail.com", password: "123456")
-file = URI.open("https://res.cloudinary.com/dwvaux61b/image/upload/ar_1:1,b_rgb:262c35,bo_1px_solid_rgb:ffffff,c_crop,g_auto,r_max,w_1000/v1678208630/thoughtful-blonde-middle-aged-woman-ponders-something-keeps-hand-near-face-has-healthy-skin-minimal-makeup-makes-choice-wears-white-blouse-poses-indoor-blank-copy-space-your-promotion_273609-53384_rv44xu.jpg")
-user12.photo.attach(io: file, filename: "murielle_avatar.png", content_type: "image/png")
+user12 = User.create!(nickname: "Miracolosa", email: " millielasarte@gmail.com", password: "123456")
+file = URI.open("https://res.cloudinary.com/dwvaux61b/image/upload/v1678966732/T02NE0241-U04JALGT892-8df71b2e9cde-512_js00x3.png")
+user12.photo.attach(io: file, filename: "millie_avatar.png", content_type: "image/png")
 
-user13 = User.create!(nickname: "Edouard", email: "til@gmail.uk", password: "123456")
-file = URI.open("https://res.cloudinary.com/dwvaux61b/image/upload/ar_1:1,b_rgb:262c35,bo_1px_solid_rgb:ffffff,c_crop,g_auto,r_max,w_1000/v1678208643/young-brunet-man-wearing-white-t-shirt_273609-21738_oyyhnr.jpg")
-user13.photo.attach(io: file, filename: "edouard_avatar.png", content_type: "image/png")
+user13 = User.create!(nickname: "Guim's", email: "guillaumelaurent05@gmail.com", password: "123456")
+file = URI.open("https://res.cloudinary.com/dwvaux61b/image/upload/v1678973104/guillaume_oqhs68.jpg")
+user13.photo.attach(io: file, filename: "guillaume_avatar.png", content_type: "image/png")
+
+user14 = User.create!(nickname: "Hache 🪓", email: "halogen.g@gmail.com", password: "123456")
+file = URI.open("https://res.cloudinary.com/dwvaux61b/image/upload/v1678973118/gauthier_plpl0v.jpg")
+user14.photo.attach(io: file, filename: "gauthier_avatar.png", content_type: "image/png")
+
+user15 = User.create!(nickname: "Mica", email: "micaeldemiranda.pro@gmail.com", password: "123456")
+file = URI.open("https://res.cloudinary.com/dwvaux61b/image/upload/v1678968797/michael_mymxvw.jpg")
+user15.photo.attach(io: file, filename: "michael_avatar.png", content_type: "image/png")
+
+user16 = User.create!(nickname: "Ursula 💕", email: "ursula.lewagon@gmail.com", password: "123456")
+file = URI.open("https://res.cloudinary.com/dwvaux61b/image/upload/v1678973879/T02NE0241-U03AV5KHMDZ-b9d9b1fc9c3b-512_qfkclv.png")
+user16.photo.attach(io: file, filename: "ursula_avatar.png", content_type: "image/png")
+
 
 puts "#{User.all.count} users created"
 puts "-------------------------------------------------------------------------"
