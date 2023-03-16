@@ -1,8 +1,8 @@
 <div class="pt-3">
   <% if current_user == @song.game.user %>
     <%= render "song-player", song: @song%>
+      <p class="pt-3">Click on a player to accept or refuse <br>the answer</p>
   <% end %>
-  <p class="pt-3">Click on a player to accept or refuse <br>the answer</p>
   <div class="pt-3"
       id="answer_block"
       data-controller="answers-index-subscription"
