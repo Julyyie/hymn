@@ -38,7 +38,7 @@ user5 = User.create!(nickname: "Piou 🐣", email: "hamza.ramdani@hotmail.fr", p
 file = URI.open("https://res.cloudinary.com/dwvaux61b/image/upload/v1678973112/hamza_zo3d1z.jpg")
 user5.photo.attach(io: file, filename: "hamza_avatar.png", content_type: "image/png")
 
-user6 = User.create!(nickname: "Lady Wagon 💃", email: "brien.nicolas@gmail.com", password: "123456")
+user6 = User.create!(nickname: "Lady Wagona 💃", email: "brien.nicolas@gmail.com", password: "123456")
 file = URI.open("https://res.cloudinary.com/dwvaux61b/image/upload/v1678966052/slack-imgs.com_huu1rd.jpg")
 user6.photo.attach(io: file, filename: "nicolas_avatar.png", content_type: "image/png")
 

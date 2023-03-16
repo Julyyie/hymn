@@ -22,6 +22,7 @@ export default class extends Controller {
   #scheduleExplanation() {
     // console.log(this)
 
+
     setInterval(() => {
       // console.log(this)
       const message = this.messages[this.index % this.messages.length]
@@ -33,6 +34,6 @@ export default class extends Controller {
         this.textTarget.style.opacity = "100%"
       }, 700);
 
-    }, 3000);
+    }, 3500);
   }
 }
