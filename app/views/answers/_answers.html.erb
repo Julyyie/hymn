@@ -1,10 +1,19 @@
 <div>
   <div data-bs-toggle="modal" data-bs-target="#Modal<%= answer.users_game.id %>" class="player_card" data-bs-backdrop=false>
     <%= cl_image_tag answer.users_game.user.photo.key, class:"profil_round" %>
-    <div class="player_card_info">
+    <div class="player_card_info
+      <% if answer.result_status == "refused" %>
+      <%= 'answer_refused' %>
+      <% elsif answer.result_status == "accepted" %>
+      <%= 'answer_accepted' %>
+      <% end %>">
       <%= answer.users_game.user.nickname%>
-      <%= answer.result_status %>
-      <div><%= answer.response_time.truncate(2) %>s</div>
+      <div class="d-flex justify-content-between align-items-center">
+        <i class="fa-solid fa-bell"></i>
+        <div class="player_results">
+          <%= answer.response_time.truncate(2) %>s
+        </div>
+      </div>
     </div>
  </div>
 </div>

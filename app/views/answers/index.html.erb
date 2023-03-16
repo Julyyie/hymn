@@ -2,8 +2,8 @@
 <% if current_user == @song.game.user %>
   <%= render "song-player", song: @song%>
 <% end %>
-<h1 class="pt-3">Buzzer Order</h1>
-<p>Click on a player to accept or refuse <br>the answer</p>
+<%# <h1 class="pt-3">Buzzer Order</h1> %>
+<p class="pt-3">Click on a player to accept or refuse <br>the answer</p>
 <div class="pt-3"
     data-controller="answers-index-subscription"
     data-answers-index-subscription-song-id-value="<%= @song.id %>"
