@@ -3,7 +3,7 @@
     <div class="modal-content">
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       <div class="avatar-modale">
-        <%= cl_image_tag answer.users_game.user.photo.key, class:"profil_round", id:"avatar" %>
+        <%= user_image_tag(user: answer.users_game.user, html_attributes: { class:"profil_round", id:"avatar" } ) %>
         <h3><%= answer.users_game.user.nickname %></h3>
       </div>
       <div class="answers">

@@ -8,7 +8,7 @@
       <% users_games = game.users_games.order(score: :desc) %>
       <% users_games.each do |user_game| %>
         <div class="player_card">
-          <%= cl_image_tag user_game.user.photo.key, class:"profil_round" %>
+          <%= user_image_tag(user: user_game.user, html_attributes: {class:"profil_round"} ) %>
           <div class="player_card_info d-flex justify-content-between">
             <p><%= user_game.user.nickname %></p>
             <p><strong><%= user_game.score %></strong></p>
@@ -20,17 +20,17 @@
     <div class="top_3_rank">
       <div class="avatar-highlight second">
         <% second_user = sorted_users_games[1].user %>
-        <%= cl_image_tag second_user.photo.key, id: "profil_round_second", alt: "my_profil" %>
+        <%= user_image_tag(user: second_user, html_attributes: {id: "profil_round_second", alt: "my_profil"})%>
         <h3>2</h3>
       </div>
       <div class="avatar-highlight first">
         <% first_user = sorted_users_games[0].user %>
-        <%= cl_image_tag first_user.photo.key, id: "profil_round_first", alt: "my_profil" %>
+        <%= user_image_tag(user: first_user, html_attributes: {id: "profil_round_first", alt: "my_profil"})%>
         <h3>1</h3>
       </div>
       <div class="avatar-highlight third">
         <% third_user = sorted_users_games[2].user %>
-        <%= cl_image_tag third_user.photo.key, id: "profil_round_third", alt: "my_profil" %>
+        <%= user_image_tag(user: third_user, html_attributes: {id: "profil_round_third", alt: "my_profil"}) %>
         <h3>3</h3>
       </div>
     </div>
@@ -38,7 +38,7 @@
       <% users_games = game.users_games.order(score: :desc) %>
       <% users_games.each do |user_game| %>
         <div class="player_card">
-          <%= cl_image_tag user_game.user.photo.key, class:"profil_round" %>
+          <%= user_image_tag(user: user_game.user, html_attributes: {class:"profil_round"}) %>
           <div class="player_card_info d-flex justify-content-between">
             <p><%= user_game.user.nickname %></p>
             <p><strong><%= user_game.score %></strong></p>

@@ -1,6 +1,6 @@
 <div>
   <div data-bs-toggle="modal" data-bs-target="#Modal<%= answer.users_game.id %>" class="player_card" data-bs-backdrop=false>
-    <%= cl_image_tag answer.users_game.user.photo.key, class:"profil_round" %>
+    <%= user_image_tag(user: answer.users_game.user, html_attributes: { class:"profil_round"} ) %>
     <div class="player_card_info
       <% if answer.result_status == "refused" %>
       <%= 'answer_refused' %>

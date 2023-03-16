@@ -4,7 +4,7 @@
   <% end %>
   <% if user_signed_in? %>
     <div class="dropdrown" data-controller="dropdown">
-      <%= cl_image_tag current_user.photo.key, class:"profil_round  dropdown-toggle", data: { action: "click->dropdown#toggle" } %>
+      <%= user_image_tag(user: current_user, html_attributes: {class:"profil_round  dropdown-toggle", data: { action: "click->dropdown#toggle" }}) %>
       <div data-dropdown-target="dropdown" class="d-none">
         <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
       </div>
