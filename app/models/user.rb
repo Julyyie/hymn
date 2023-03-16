@@ -9,4 +9,7 @@ class User < ApplicationRecord
 
   has_one_attached :photo
 
+  def find_user_game_for(game)
+    users_games.find_by(game: game)
+  end
 end

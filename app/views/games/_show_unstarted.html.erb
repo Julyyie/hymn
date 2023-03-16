@@ -1,19 +1,24 @@
 <div class="">
-  <h1 class="pt-5 pb-2"><%= game.name.capitalize %></h1>
+  <h1 class="pt-5"><%= game.name.capitalize %></h1>
   <p>Waiting for participants to join the game...</p>
 
-  <div data-controller="game-subscription" class="pt-5"
+  <div data-controller="game-subscription" class="pt-3"
       data-game-subscription-game-id-value="<%= game.id %>"
       data-game-subscription-game-master-value="<%= game.user == current_user %>"
       data-game-subscription-target="players"
     >
-    <% game.users_games.each do |user_game| %>
+
+    <% unless game.user == current_user %>
+      <%= render "player", user_game: current_user.find_user_game_for(game) %>
+    <% end %>
+
+    <% game.users_games_except(current_user).each do |user_game| %>
       <%= render "player", user_game: user_game %>
     <% end %>
   </div>
 
-  <% if game.user == current_user %>
-  <h2 class="pt-5">Share this link with your friends!</h2>
+  <% if game.users_games_except(current_user) %>
+  <h2 class="pt-5 pb-2">Share this link with your friends!</h2>
 
   <div class="link_join_party d-flex justify-content-between">
     <i class="fa-solid fa-link"></i>

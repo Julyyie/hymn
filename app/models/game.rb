@@ -14,4 +14,8 @@ class Game < ApplicationRecord
   def finished!
     self.update(status: "finished")
   end
+
+  def users_games_except(user)
+    self.users_games.where.not(user: user)
+  end
 end

@@ -23,6 +23,10 @@
   text-decoration: none;
 }
 
-.btn_pink_lg :hover {
-  color: $dark-000;
+.btn_pink_lg:hover {
+  color: $dark-900;
+}
+
+.btn_pink_lg:focus {
+  color: $dark-900;
 }
