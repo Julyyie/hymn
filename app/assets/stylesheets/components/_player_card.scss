@@ -2,8 +2,10 @@
     margin-top: 10px;
     display: flex;
     justify-content: space-between;
+    padding-bottom: 1em;
   }
   .player_card_info {
+    justify-content: space-between;
     height: 50px;
     margin-left: 10px;
     background-color: rgba(212, 212, 212, 1);
@@ -21,4 +23,18 @@
     width: 50px;
     height: 50px;
     border-radius: 100%;
+  }
+
+  .answer_refused {
+    border: solid 2px $red;
+    box-shadow: 0px 0px 25px $red;
+  }
+
+  .answer_accepted {
+    border: solid 2px rgb(23, 224, 23);
+    box-shadow: 0px 0px 25px rgb(23, 224, 23);
+  }
+
+  .player_results {
+    padding-left: 0.5em;
   }

@@ -2,6 +2,9 @@
   <div>
     <h1 class="pt-5"><%= game.name.capitalize %></h1>
     <p>Waiting for participants to join the game...</p>
+     <p class="waiting_rules mt-3" data-controller="explanation">
+    <span data-explanation-target="text" class="fade">Please wait for the game master! You will be soon redirected.</span>
+  </p>
   </div>
 
   <div data-controller="game-subscription" class="pt-3 flex-grow-1"
@@ -32,8 +35,6 @@
       <%= link_to 'Start Game', song_answers_path(game.songs.first, params: { status: 'ongoing' }), class: "btn_pink_lg", data: {turbolinks: false} %>
     </div>
 
-    <% else %>
-      <p class="link_join_party mt-5" data-controller="explanation"> Please wait for the game master to start the game! You will be soon redirected.</p>
     <% end %>
   </div>
 </div>
