@@ -37,7 +37,9 @@ export default class extends Controller {
                 modal.remove();
               })
             }
-            this.answersTarget.innerHTML = data["answers"]
+            setTimeout(() => {
+              this.answersTarget.innerHTML = data["answers"]
+            }, 100);
           }
         }
       }
