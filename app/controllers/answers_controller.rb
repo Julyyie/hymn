@@ -4,7 +4,7 @@ class AnswersController < ApplicationController
   def index
     @song = Song.find(params[:song_id])
     @answers = policy_scope(Answer) # Confirmer le scope avec un TA
-    @answers = Answer.where(song: @song).order(time: :asc)
+    @answers = Answer.where(song: @song).order(response_time: :asc)
     @game = @song.game
 
     if params[:status] == "ongoing"
