@@ -12,12 +12,10 @@ export default class extends Controller {
   static targets = ["answers", "close"]
 
   connect() {
-    console.log(this.gameMasterValue)
     this.token = document.querySelector('meta[name="csrf-token"]').content
     this.channel = createConsumer().subscriptions.create(
       { channel: "AnswersIndexChannel", song_id: this.songIdValue },
       { received: (data) => {
-          console.log(data)
 
           // const currentUserIsGameMaster = this.currentUserIdValue === data.game_master_id
           // console.log(currentUserIsGameMaster);
@@ -31,7 +29,9 @@ export default class extends Controller {
           window.location.assign(data["url"])
           } else if (data["event"] === "answer_updated") {
             if (this.gameMasterValue === true) {
-              this.closeTarget.click();
+
+              document.querySelector(`#Modal${data["users_game_id"]} .btn-close`).click()
+              // this.closeTarget.click();
               // simulate click on button
               // const modal = Modal.getInstance(`#Modal${data["users_game_id"]}`);
               // modal.hide();
