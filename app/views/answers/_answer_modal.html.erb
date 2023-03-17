@@ -1,7 +1,7 @@
 <div class="modal fade" id="Modal<%= answer.users_game.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <button type="button" class="btn-close" data-answers-index-subscription-target="close" data-bs-dismiss="modal" aria-label="Close"></button>
       <div class="avatar-modale">
         <%= user_image_tag(user: answer.users_game.user, html_attributes: { class:"profil_round", id:"avatar" } ) %>
         <h3><%= answer.users_game.user.nickname %></h3>
