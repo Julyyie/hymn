@@ -9,7 +9,7 @@ export default class extends Controller {
     currentUserId: Number,
     gameMaster: Boolean
   }
-  static targets = ["answers"]
+  static targets = ["answers", "close"]
 
   connect() {
     console.log(this.gameMasterValue)
@@ -31,13 +31,17 @@ export default class extends Controller {
           window.location.assign(data["url"])
           } else if (data["event"] === "answer_updated") {
             if (this.gameMasterValue === true) {
-              const modal = Modal.getInstance(`#Modal${data["users_game_id"]}`);
-              modal.hide();
-              document.querySelectorAll(".modal-backdrop").forEach((modal) => {
-                modal.remove();
-              })
+              this.closeTarget.click();
+              // simulate click on button
+              // const modal = Modal.getInstance(`#Modal${data["users_game_id"]}`);
+              // modal.hide();
+              // document.querySelectorAll(".modal-backdrop").forEach((modal) => {
+              //   modal.remove();
+              // })
             }
-            this.answersTarget.innerHTML = data["answers"]
+            setTimeout(() => {
+              this.answersTarget.innerHTML = data["answers"]
+            }, 100);
           }
         }
       }
