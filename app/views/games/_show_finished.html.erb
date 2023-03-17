@@ -45,7 +45,7 @@
             <%= user_image_tag(user: user_game.user, html_attributes: {class:"profil_round"}) %>
             <div class="player_card_info d-flex justify-content-between">
               <p><%= user_game.user.nickname %></p>
-              <p><strong><%= user_game.score %></strong></p>
+              <p><strong><%= user_game.score.to_i %>pts</strong></p>
             </div>
           </div>
         <% end %>
