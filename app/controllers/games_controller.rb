@@ -19,7 +19,6 @@ class GamesController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-    # Save all songs associated to the chosen playlist
     find_songs(@game)
   end
 
@@ -56,14 +55,26 @@ class GamesController < ApplicationController
     skip_authorization
   end
 
+
+  private
+
+  def params_game
+    params.require(:game).permit(:name, :spotify_playlist_id)
+  end
+
+  # Saves all songs associated to the chosen playlist
   def find_songs(game)
     playlist_uri = game.spotify_playlist_id
-    # Decomposing the URI
+    # Decomposing the URI for appropriate API call
     spotify_playlist_id = playlist_uri[17..-1]
     # Spotify API call using RSpotify gem - find associated tracks
     spotify_playlist = RSpotify::Playlist.find("playlist", "#{spotify_playlist_id}")
     tracks = spotify_playlist.tracks
-    # Saving associated songs
+    save_songs(tracks, game)
+  end
+  
+  # Saves songs from the game's associated playlist
+  def save_songs(tracks, game)
     tracks.each do |track|
       song = Song.new
       song.game = game
@@ -73,11 +84,5 @@ class GamesController < ApplicationController
       song.spotify_track_id = track.uri
       song.save!
     end
-  end
-
-  private
-
-  def params_game
-    params.require(:game).permit(:name, :spotify_playlist_id)
   end
 end
