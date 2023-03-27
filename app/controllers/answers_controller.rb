@@ -3,10 +3,11 @@ class AnswersController < ApplicationController
 
   def index
     @song = Song.find(params[:song_id])
-    @answers = policy_scope(Answer) # Confirmer le scope avec un TA
+    @answers = policy_scope(Answer)
     @answers = Answer.where(song: @song).order(response_time: :asc)
     @game = @song.game
 
+    # Redirecting all participants to the first song: answers#new
     if params[:status] == "ongoing"
       @song.game.ongoing!
       GameChannel.broadcast_to(
@@ -14,9 +15,12 @@ class AnswersController < ApplicationController
         { event: "game_started", url: new_song_answer_path(@song.game.songs.first) }
       )
     end
-    @next_song = @game.songs.order(:id).where("id > ?", @song.id).first
 
+    # Find next song id
+    @next_song = @game.songs.order(:id).where("id > ?", @song.id).first
     @prev_song = @game.songs.order(:id).where("id < ?", @song.id).last
+
+    # Redirecting all participants to the next song: answers#new
     if @game.user == current_user
       AnswersIndexChannel.broadcast_to(
         @prev_song,

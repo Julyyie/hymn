@@ -11,8 +11,6 @@ export default class extends Controller {
       { channel: "GameChannel", id: this.gameIdValue },
       { received: data => this.#handleEvent(data) }
     )
-    // { received: data => this.playersTarget.insertAdjacentHTML("beforeend", data) }
-    // )
     console.log(`Subscribe to the chatroom with the id ${this.gameIdValue}.`)
   }
 

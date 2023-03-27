@@ -16,9 +16,6 @@ export default class extends Controller {
     this.channel = createConsumer().subscriptions.create(
       { channel: "AnswersIndexChannel", song_id: this.songIdValue },
       { received: (data) => {
-
-          // const currentUserIsGameMaster = this.currentUserIdValue === data.game_master_id
-          // console.log(currentUserIsGameMaster);
           if (data["event"] === "player_buzzed" && this.gameMasterValue === true) {
             this.answersTarget.insertAdjacentHTML("beforeend", data.answer);
             this.answersTarget.insertAdjacentHTML("beforeend", data.answer_modal)
@@ -29,15 +26,7 @@ export default class extends Controller {
           window.location.assign(data["url"])
           } else if (data["event"] === "answer_updated") {
             if (this.gameMasterValue === true) {
-
               document.querySelector(`#Modal${data["users_game_id"]} .btn-close`).click()
-              // this.closeTarget.click();
-              // simulate click on button
-              // const modal = Modal.getInstance(`#Modal${data["users_game_id"]}`);
-              // modal.hide();
-              // document.querySelectorAll(".modal-backdrop").forEach((modal) => {
-              //   modal.remove();
-              // })
             }
             setTimeout(() => {
               this.answersTarget.innerHTML = data["answers"]
@@ -50,7 +39,6 @@ export default class extends Controller {
 
     updateStatus(event) {
       event.preventDefault()
-      console.log("hello")
       fetch(event.currentTarget.href, {
         method: "PATCH",
         headers: {
