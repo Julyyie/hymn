@@ -25,6 +25,7 @@ class GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
     authorize @game
+    
     # Creating all participants
     unless current_user == @game.user || UsersGame.find_by(user: current_user, game: @game).present?
       users_game = UsersGame.new # users_game = "participant": user in the context of a game
@@ -72,7 +73,7 @@ class GamesController < ApplicationController
     tracks = spotify_playlist.tracks
     save_songs(tracks, game)
   end
-  
+
   # Saves songs from the game's associated playlist
   def save_songs(tracks, game)
     tracks.each do |track|

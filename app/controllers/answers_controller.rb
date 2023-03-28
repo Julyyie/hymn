@@ -4,8 +4,6 @@ class AnswersController < ApplicationController
   def index
     @song = Song.find(params[:song_id])
     @answers = policy_scope(Answer)
-    @answers = Answer.where(song: @song).order(response_time: :asc)
-    @game = @song.game
 
     # Redirecting all participants to the first song: answers#new
     if params[:status] == "ongoing"
@@ -16,7 +14,11 @@ class AnswersController < ApplicationController
       )
     end
 
+    # Display all answers
+    @answers = Answer.where(song: @song).order(response_time: :asc)
+
     # Find next song id
+    @game = @song.game
     @next_song = @game.songs.order(:id).where("id > ?", @song.id).first
     @prev_song = @game.songs.order(:id).where("id < ?", @song.id).last
 
@@ -66,7 +68,6 @@ class AnswersController < ApplicationController
     @answer.update(result_status: 'accepted')
     users_game = @answer.users_game
     users_game.score += 10
-
     if @answer.response_time < 1
       users_game.score += 20
     elsif @answer.response_time < 3
