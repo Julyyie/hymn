@@ -14,7 +14,7 @@ export default class extends Controller {
   connect() {
     this.token = document.querySelector('meta[name="csrf-token"]').content
 
-    // Subscribe all clients
+    // Subscribe all clients - participants & game master
     this.channel = createConsumer().subscriptions.create(
       { channel: "AnswersIndexChannel", song_id: this.songIdValue },
       { received: (data) => {
@@ -26,7 +26,7 @@ export default class extends Controller {
           // Redirect all participants to the next song url
           else if (data["event"] === "next_song" && this.gameMasterValue === false) {
             window.location.assign(data["url"])
-            
+
           // Redirect all participants to the game's ranking
           } else if (data["event"] === "game_finished" && this.gameMasterValue === false) {
           window.location.assign(data["url"])
