@@ -15,17 +15,12 @@ export default class extends Controller {
       "If you find before 1 second, you win the maximum bonus of 20 pts! 🙀",
       "🤭 Who will be the first to buzz in for maximum points?"
     ];
-
-
     this.#scheduleExplanation()
   }
 
   #scheduleExplanation() {
-    // console.log(this)
-
 
     setInterval(() => {
-      // console.log(this)
       const message = this.messages[this.index % this.messages.length]
       this.index += 1
       this.textTarget.style.opacity = '0%'

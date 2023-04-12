@@ -13,31 +13,28 @@ export default class extends Controller {
 
   connect() {
     this.token = document.querySelector('meta[name="csrf-token"]').content
+
+    // Subscribe all clients - participants & game master
     this.channel = createConsumer().subscriptions.create(
       { channel: "AnswersIndexChannel", song_id: this.songIdValue },
       { received: (data) => {
-
-          // const currentUserIsGameMaster = this.currentUserIdValue === data.game_master_id
-          // console.log(currentUserIsGameMaster);
+          // Insert answer in answers index
           if (data["event"] === "player_buzzed" && this.gameMasterValue === true) {
             this.answersTarget.insertAdjacentHTML("beforeend", data.answer);
             this.answersTarget.insertAdjacentHTML("beforeend", data.answer_modal)
           }
+          // Redirect all participants to the next song url
           else if (data["event"] === "next_song" && this.gameMasterValue === false) {
             window.location.assign(data["url"])
+
+          // Redirect all participants to the game's ranking
           } else if (data["event"] === "game_finished" && this.gameMasterValue === false) {
           window.location.assign(data["url"])
+
+          // Answer validation - close modale
           } else if (data["event"] === "answer_updated") {
             if (this.gameMasterValue === true) {
-
               document.querySelector(`#Modal${data["users_game_id"]} .btn-close`).click()
-              // this.closeTarget.click();
-              // simulate click on button
-              // const modal = Modal.getInstance(`#Modal${data["users_game_id"]}`);
-              // modal.hide();
-              // document.querySelectorAll(".modal-backdrop").forEach((modal) => {
-              //   modal.remove();
-              // })
             }
             setTimeout(() => {
               this.answersTarget.innerHTML = data["answers"]
@@ -50,7 +47,6 @@ export default class extends Controller {
 
     updateStatus(event) {
       event.preventDefault()
-      console.log("hello")
       fetch(event.currentTarget.href, {
         method: "PATCH",
         headers: {

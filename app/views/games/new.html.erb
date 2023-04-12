@@ -1,12 +1,9 @@
-
 <h1 class="pt-5 pb-2 text-center">Create a new game</h1>
 
 <div class="slide-container" data-controller="games">
   <% if @step == "new_playlist" %>
-    <%= render 'new_playlist' %>
+    <%= render 'new_playlist' %> <!-- First game set-up page: playlist search -->
   <% elsif @step == "namegame" %>
-    <%= render 'new_namegame' %>
+    <%= render 'new_namegame' %>  <!-- Second and last game set-up page: the user can choose the game's name -->
   <% end %>
-
-
 </div>

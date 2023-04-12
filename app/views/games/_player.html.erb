@@ -1,3 +1,4 @@
+<!-- Player card info, rendered on waiting room and final ranking: games#show -->
 <div class="<%= current_user == user_game.user ? 'my_card' : 'player_card' %>" >
   <%= user_image_tag(user: user_game.user, html_attributes: { class: "profil_round" }) %>
   <div class="<%= current_user == user_game.user ? 'my_card_info' : 'player_card_info' %>">

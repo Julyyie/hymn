@@ -2,17 +2,18 @@
   <div>
     <h1 class="pt-5"><%= game.name.capitalize %></h1>
     <p>Waiting for participants to join the game...</p>
+    <!-- Animated game rules-->
      <p class="waiting_rules mt-3" data-controller="explanation">
-    <span data-explanation-target="text" class="fade-explanation">Please wait for the game master! You will be soon redirected.</span>
-  </p>
+      <span data-explanation-target="text" class="fade-explanation">Please wait for the game master! You will be soon redirected.</span>
+    </p>
   </div>
 
+  <!-- Action cable: game channel subscription -->
   <div data-controller="game-subscription" class="pt-3 flex-grow-1"
       data-game-subscription-game-id-value="<%= game.id %>"
       data-game-subscription-game-master-value="<%= game.user == current_user %>"
       data-game-subscription-target="players"
-    >
-
+  >
     <% unless game.user == current_user %>
       <%= render "player", user_game: current_user.find_user_game_for(game) %>
     <% end %>
@@ -22,8 +23,10 @@
     <% end %>
   </div>
 
+ <!-- For game master only -->
   <div>
     <% if game.user == current_user %>
+    <!-- Game's link to share -->
     <h2 class="pt-5 pb-2">Share this link with your friends!</h2>
 
     <div class="link_join_party d-flex justify-content-between">
@@ -31,10 +34,10 @@
       <p>www.hymngame.online/games/<%= game.id %></p>
     </div>
 
+    <!-- Start game button linking to answer#new nested in playlist's first song -->
     <div class="pt-3">
       <%= link_to 'Start Game', song_answers_path(game.songs.first, params: { status: 'ongoing' }), class: "btn_pink_lg", data: {turbolinks: false} %>
     </div>
-
     <% end %>
   </div>
 </div>

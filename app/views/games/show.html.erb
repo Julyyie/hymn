@@ -1,5 +1,5 @@
 <% if @game.status == "unstarted"  %>
-  <%= render "show_unstarted", game: @game %>
+  <%= render "show_unstarted", game: @game %> <!-- Waiting room for participants to join the game -->
 <% elsif @game.status == "finished" %>
-  <%= render "show_finished", game: @game %>
+  <%= render "show_finished", game: @game %> <!-- Game's final ranking -->
 <% end %>

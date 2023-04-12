@@ -3,16 +3,14 @@
   <p>Choose a playlist of your own or select one from the public playlists.</p>
   <p class="pt-1"><strong>Try “Rock”, “60s”, “Top Songs”...</strong></p>
 </div>
-<div class="search-box">
 
+<div class="search-box">
   <%= form_with url: new_game_path, method: :get, id:"search-form" do %>
     <%= text_field_tag :playlist, params[:playlist], data: { action: "keyup->games#updatelist" }, class: "form-control", placeholder: "Find a Playlist.." %>
     <%= text_field_tag :spotify_playlist_id, nil, data: { games_target: "input" }, class: "d-none" %>
-
     <div class="d-flex flex-wrap pt-3 pb-3 gap-3 justify-content-center" data-games-target="list">
-      <%= render "list" if defined?(playlists) %>
+      <%= render "list" if defined?(playlists) %> <!-- Partial with all playlist found based on search -->
     </div>
-
     <%= button_tag "Next", type: "submit", class: "btn_pink_lg" %>
   <% end %>
 </div>
